@@ -9,3 +9,9 @@ kibana:
 
 fluentd:
 	docker image build -t ch08/fluentd-es:latest .
+
+req:
+	curl localhost:8080
+
+es:
+	curl http://localhost:9200/_cat/indices?v
