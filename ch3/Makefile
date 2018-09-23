@@ -23,4 +23,24 @@ push:
 	docker image push localhost:5000/example/echo:latest
 
 pull-test:
-	docker container exec -it worker01 docker image pull registry:5000/example/echo:latest
+	docker container exec -it \
+	  worker01 docker image pull registry:5000/example/echo:latest
+
+service-test:
+	docker container exec -it manager \
+	  docker service create --replicas 1 --publish 8000:8080 --name echo registry:5000/example/echo:latest
+
+service-ls:
+	@docker container exec -it manager \
+	  docker service ls
+
+scale := 6
+service-scale:
+	@docker container exec -it manager \
+	  docker service scale echo=$(scale)
+
+service-ps:
+	@docker container exec -it manager \
+	  docker service ps echo
+
+
