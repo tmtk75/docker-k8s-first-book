@@ -23,4 +23,4 @@ push:
 	docker image push localhost:5000/example/echo:latest
 
 pull-test:
-	docker container exec -it worker01 docker image pull registry:5000/hello:latest
+	docker container exec -it worker01 docker image pull registry:5000/example/echo:latest

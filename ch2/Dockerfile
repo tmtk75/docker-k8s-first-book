@@ -7,8 +7,8 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
       -o echo main.go
 
 
-#FROM busybox
-FROM alpine
+FROM busybox
+#FROM alpine
 COPY --from=golang /echo /
 RUN chmod +x /echo
 
