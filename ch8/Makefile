@@ -3,3 +3,6 @@ max-size:
 	  --log-opt max-size=1m \
 	  --log-opt max-file=5 \
 	  example/echo:latest
+
+kibana:
+	open http://localhost:5601
