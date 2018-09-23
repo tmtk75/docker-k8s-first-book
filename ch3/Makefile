@@ -18,9 +18,9 @@ swarm-ls:
 	docker container exec -it manager docker node ls
 
 push:
-	docker image build -t hello .
-	docker image tag hello:latest localhost:5000/hello:latest
-	docker image push localhost:5000/hello:latest
+	(cd ../ch2; make build)
+	docker image tag example/echo:latest localhost:5000/example/echo:latest
+	docker image push localhost:5000/example/echo:latest
 
 pull-test:
 	docker container exec -it worker01 docker image pull registry:5000/hello:latest

@@ -1,6 +1,15 @@
-FROM golang:1.9
+FROM golang:1.9 AS golang
 
-RUN mkdir /echo
-COPY main.go /echo
+WORKDIR /
+COPY main.go /
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+      go build -a -installsuffix cgo \
+      -o echo main.go
 
-CMD ["go", "run", "/echo/main.go"]
+
+#FROM busybox
+FROM alpine
+COPY --from=golang /echo /
+RUN chmod +x /echo
+
+CMD ["/echo"]
