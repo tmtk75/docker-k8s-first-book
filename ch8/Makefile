@@ -6,3 +6,6 @@ max-size:
 
 kibana:
 	open http://localhost:5601
+
+fluentd:
+	docker image build -t ch08/fluentd-es:latest .
